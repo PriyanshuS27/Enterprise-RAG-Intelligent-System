@@ -1,0 +1,6 @@
+patient_id,name,age,condition,admission_date,doctor_id
+001,John Doe,45,Healthy,2025-01-15,201
+002,Jane Smith,38,Hypertension,2025-02-10,202
+003,Bob Johnson,52,Diabetes,2025-03-05,203
+004,Alice Brown,41,Cardiac Issues,2025-01-20,201
+005,Charlie Davis,55,Respiratory,2025-02-28,204

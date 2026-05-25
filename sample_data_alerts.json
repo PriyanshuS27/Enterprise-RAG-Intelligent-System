@@ -1,0 +1,31 @@
+{
+  "alerts": [
+    {
+      "alert_id": "ALR_001",
+      "severity": "high",
+      "message": "Server CPU above 90%",
+      "timestamp": "2025-05-18T08:45:00",
+      "service": "production-api-server",
+      "threshold": "90%",
+      "current_value": "94%"
+    },
+    {
+      "alert_id": "ALR_002",
+      "severity": "medium",
+      "message": "Database connection slow",
+      "timestamp": "2025-05-18T09:30:00",
+      "service": "primary-database",
+      "response_time": "2500ms",
+      "threshold": "2000ms"
+    },
+    {
+      "alert_id": "ALR_003",
+      "severity": "low",
+      "message": "Disk space 85% full",
+      "timestamp": "2025-05-18T10:00:00",
+      "service": "storage-server",
+      "available": "150 GB",
+      "total": "1 TB"
+    }
+  ]
+}

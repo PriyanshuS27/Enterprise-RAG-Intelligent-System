@@ -1,0 +1,6 @@
+employee_id,name,department,salary,joining_date,designation
+101,Amit Kumar,Engineering,₹15 LPA,2022-03-15,Senior Engineer
+102,Priya Sharma,HR,₹12 LPA,2021-06-10,HR Manager
+103,Rajesh Patel,Finance,₹18 LPA,2020-01-05,Finance Director
+104,Neha Gupta,Marketing,₹11 LPA,2023-02-01,Marketing Executive
+105,Vikram Singh,Operations,₹14 LPA,2021-11-20,Operations Lead

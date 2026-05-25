@@ -1,0 +1,31 @@
+{
+  "compliance_records": [
+    {
+      "record_id": "COMP_001",
+      "standard": "HIPAA",
+      "status": "compliant",
+      "last_audit": "2025-01-15",
+      "next_audit": "2026-01-15",
+      "score": "98%",
+      "description": "Health Insurance Portability and Accountability Act - Patient data protection"
+    },
+    {
+      "record_id": "COMP_002",
+      "standard": "GDPR",
+      "status": "compliant",
+      "last_audit": "2025-02-10",
+      "next_audit": "2026-02-10",
+      "score": "96%",
+      "description": "General Data Protection Regulation - EU data privacy"
+    },
+    {
+      "record_id": "COMP_003",
+      "standard": "SOC2",
+      "status": "in_progress",
+      "last_audit": "2025-03-01",
+      "next_audit": "2025-09-01",
+      "score": "85%",
+      "description": "Service Organization Control - Security and availability assessment"
+    }
+  ]
+}

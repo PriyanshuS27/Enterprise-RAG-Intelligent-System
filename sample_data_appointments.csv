@@ -1,0 +1,6 @@
+appointment_id,patient_id,doctor_id,appointment_date,status,notes
+1,001,201,2025-05-18,Completed,Regular checkup completed successfully
+2,002,202,2025-05-17,Scheduled,BP monitoring follow-up
+3,003,203,2025-05-16,Completed,Diabetes management review
+4,004,201,2025-05-19,Scheduled,Cardiac assessment pending
+5,005,204,2025-05-15,Completed,Respiratory therapy session

@@ -1,0 +1,36 @@
+{
+  "audit_logs": [
+    {
+      "timestamp": "2025-05-18T09:00:00",
+      "user": "doctor_ramesh",
+      "action": "accessed_patient_001",
+      "resource": "Patient Medical Report",
+      "status": "success",
+      "details": "Viewed patient lab results"
+    },
+    {
+      "timestamp": "2025-05-18T10:15:00",
+      "user": "hr_priya",
+      "action": "accessed_salary_data",
+      "resource": "Employee Records",
+      "status": "success",
+      "details": "Generated salary report"
+    },
+    {
+      "timestamp": "2025-05-18T11:30:00",
+      "user": "intern_jane",
+      "action": "attempted_confidential_access",
+      "resource": "Financial Report",
+      "status": "denied",
+      "reason": "Insufficient permissions"
+    },
+    {
+      "timestamp": "2025-05-18T12:00:00",
+      "user": "admin_root",
+      "action": "system_audit",
+      "resource": "All Documents",
+      "status": "success",
+      "details": "Full system audit completed"
+    }
+  ]
+}

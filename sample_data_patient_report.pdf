@@ -1,0 +1,32 @@
+Patient Medical Report - John Doe
+============================================
+
+Date: 2025-01-15
+Patient ID: JD_001
+Name: John Doe
+Age: 45
+Gender: Male
+
+LABORATORY RESULTS
+==================
+Hemoglobin: 14.2 g/dL (Normal Range: 13.5-17.5)
+WBC (White Blood Cells): 7000 cells/µL (Normal Range: 4500-11000)
+RBC (Red Blood Cells): 5.2 million/µL (Normal Range: 4.7-6.1)
+Platelets: 250000/µL (Normal Range: 150000-400000)
+
+Blood Pressure: 120/80 mmHg (Normal)
+Heart Rate: 72 bpm (Normal)
+
+DIAGNOSIS
+=========
+Status: Normal - No abnormalities detected
+All vital signs within normal range
+
+RECOMMENDATIONS
+===============
+1. Continue regular exercise
+2. Maintain healthy diet
+3. Follow-up checkup in 6 months
+
+Doctor: Dr. Ramesh Kumar
+License: MED_2025_001
