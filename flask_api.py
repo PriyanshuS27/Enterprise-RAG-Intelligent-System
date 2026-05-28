@@ -423,44 +423,44 @@ def server_error(error):
 # ============================================================================
 
 if __name__ == '__main__':
-    if rag_system:
-        print("\n" + "="*80)
-        print("🚀 ENTERPRISE RAG API SERVER (ENHANCED WITH SMART RBAC)")
-        print("="*80)
-        print("\nStarting Flask API server...")
-        
-        # Get port from environment variable (Render uses this) or default to 8000
-        port = int(os.getenv("PORT", 8000))
-        is_production = os.getenv("ENVIRONMENT", "development") == "production"
-        
-        print(f"Endpoint: http://localhost:{port}")
-        print("\n📋 Core Endpoints:")
-        print("  GET  /api/health - Health check")
-        print("  GET  /api/users - Get all users with permissions")
-        print("  GET  /api/documents - Get all documents")
-        print("  POST /api/query - Query the RAG system (supports environment & conversations)")
-        print("  GET  /api/audit-logs - Get audit logs")
-        print("  GET  /api/metrics - Get metrics (with cache info)")
-        
-        print("\n💬 Conversation Management (NEW):")
-        print("  GET  /api/conversations/<session_id> - Get conversation history")
-        print("  GET  /api/user/<user_id>/sessions - Get user sessions")
-        
-        print("\n🔐 Enhanced RBAC Tools (NEW):")
-        print("  POST /api/check-access - Check user access (with env support)")
-        print("  GET  /api/audit-logs/enhanced - Enhanced audit logs")
-        print("  GET  /api/rbac/permissions/<user_id> - Get user permissions")
-        
-        print("\n⚙️  Features:")
-        print("  ✓ Multi-environment support (prod/dev)")
-        print("  ✓ Conversation history tracking")
-        print("  ✓ Permission caching (5 min TTL)")
-        print("  ✓ Detailed audit trail")
-        print("  ✓ Smart action normalization")
-        
-        print("\n" + "="*80 + "\n")
-        
-        # In production on Render, debug should be False
-        app.run(debug=not is_production, port=port, host='0.0.0.0')
-    else:
-        print("❌ Cannot start server - RAG system not initialized")
+    print("\n" + "="*80)
+    print("🚀 ENTERPRISE RAG API SERVER (ENHANCED WITH SMART RBAC)")
+    print("="*80)
+    print("\nStarting Flask API server...")
+    
+    # Get port from environment variable (Render uses this) or default to 8000
+    port = int(os.getenv("PORT", 8000))
+    is_production = os.getenv("ENVIRONMENT", "development") == "production"
+    
+    print(f"Endpoint: http://localhost:{port}")
+    print(f"RAG System Status: {'✅ Ready' if rag_system else '⚠️ GROQ not initialized (run queries will be limited)'}")
+    print("\n📋 Core Endpoints:")
+    print("  GET  /api/health - Health check")
+    print("  GET  /api/users - Get all users with permissions")
+    print("  GET  /api/documents - Get all documents")
+    print("  POST /api/query - Query the RAG system (supports environment & conversations)")
+    print("  GET  /api/audit-logs - Get audit logs")
+    print("  GET  /api/metrics - Get metrics (with cache info)")
+    
+    print("\n💬 Conversation Management (NEW):")
+    print("  GET  /api/conversations/<session_id> - Get conversation history")
+    print("  GET  /api/user/<user_id>/sessions - Get user sessions")
+    
+    print("\n🔐 Enhanced RBAC Tools (NEW):")
+    print("  POST /api/check-access - Check user access (with env support)")
+    print("  GET  /api/audit-logs/enhanced - Enhanced audit logs")
+    print("  GET  /api/rbac/permissions/<user_id> - Get user permissions")
+    
+    print("\n⚙️  Features:")
+    print("  ✓ Multi-environment support (prod/dev)")
+    print("  ✓ Conversation history tracking")
+    print("  ✓ Permission caching (5 min TTL)")
+    print("  ✓ Detailed audit trail")
+    print("  ✓ Smart action normalization")
+    
+    print("\n" + "="*80 + "\n")
+    
+    # In production on Render, debug should be False
+    app.run(debug=not is_production, port=port, host='0.0.0.0')
+else:
+    print("❌ Cannot start server - RAG system not initialized")
