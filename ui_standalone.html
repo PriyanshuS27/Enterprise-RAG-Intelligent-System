@@ -971,7 +971,20 @@
     </footer>
 
     <script>
-        const API_URL = 'http://localhost:8000/api';
+        // Detect environment and set API URL
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const isProduction = window.location.hostname.includes('vercel.app');
+        
+        let API_URL;
+        if (isLocalhost) {
+            API_URL = 'http://localhost:8000/api';
+        } else if (isProduction) {
+            // For production: Use environment variable or show info
+            API_URL = 'https://enterprise-rag-backend.onrender.com/api'; // Update with your backend URL
+        } else {
+            API_URL = 'http://localhost:8000/api';
+        }
+        
         const users = {
             doctor_ramesh: { name: 'Dr. Ramesh', role: 'doctor', avatar: '👨‍⚕️' },
             hr_priya: { name: 'Priya Sharma', role: 'hr', avatar: '👩‍💼' },
@@ -1191,14 +1204,31 @@
         function displayError(message) {
             const resultsContainer = document.getElementById('resultsContainer');
             resultsContainer.style.display = 'block';
-            resultsContainer.innerHTML = `
-                <div class="error-message">${message}</div>
-            `;
+            
+            let errorHTML = `<div class="error-message">${message}</div>`;
+            
+            // Add helpful info for production deployment
+            if (isProduction && message.includes('Network')) {
+                errorHTML += `
+                    <div class="error-message" style="margin-top: 1rem; background: rgba(245, 158, 11, 0.1); border-color: #f59e0b; color: #fcd34d;">
+                        <strong>⚠️ Backend API Not Deployed</strong><br>
+                        For production use, deploy the Flask API backend on a service like Render, Railway, or Heroku.<br>
+                        <small>Currently configured for: ${API_URL}</small>
+                    </div>
+                `;
+            }
+            
+            resultsContainer.innerHTML = errorHTML;
         }
 
         // Initialize access display on page load
         updateAccessDisplay(currentUser);
         updateSampleQuestions(currentUser);
+        
+        // Warn if running in production without backend
+        if (isProduction) {
+            console.warn('⚠️ Running in production without backend API deployment. Configure API_URL and deploy backend for full functionality.');
+        }
     </script>
 </body>
 </html>
