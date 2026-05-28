@@ -42,17 +42,17 @@ RESOURCE_MAPPING = {
     },
     
     "alerts": {
-        "keywords": ["alert", "system alert", "notification", "warning", "status"],
+        "keywords": ["alert", "system alert", "notification", "warning", "status", "infrastructure", "system status"],
         "required_documents": ["JSON_002"],  # alerts.json
-        "roles_allowed": ["admin", "engineer"],
+        "roles_allowed": ["admin", "engineer", "intern"],
         "security_level": "internal",
         "description": "System alerts and notifications"
     },
     
     "compliance": {
-        "keywords": ["compliance", "gdpr", "hipaa", "regulation", "policy"],
+        "keywords": ["compliance", "gdpr", "hipaa", "regulation", "policy", "company data", "data sources", "information"],
         "required_documents": ["JSON_003"],  # compliance.json
-        "roles_allowed": ["admin", "hr"],
+        "roles_allowed": ["admin", "hr", "intern"],
         "security_level": "confidential",
         "description": "Compliance and regulatory information"
     },

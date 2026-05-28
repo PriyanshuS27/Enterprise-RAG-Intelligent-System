@@ -428,7 +428,12 @@ if __name__ == '__main__':
         print("🚀 ENTERPRISE RAG API SERVER (ENHANCED WITH SMART RBAC)")
         print("="*80)
         print("\nStarting Flask API server...")
-        print("Endpoint: http://localhost:8000")
+        
+        # Get port from environment variable (Render uses this) or default to 8000
+        port = int(os.getenv("PORT", 8000))
+        is_production = os.getenv("ENVIRONMENT", "development") == "production"
+        
+        print(f"Endpoint: http://localhost:{port}")
         print("\n📋 Core Endpoints:")
         print("  GET  /api/health - Health check")
         print("  GET  /api/users - Get all users with permissions")
@@ -455,6 +460,7 @@ if __name__ == '__main__':
         
         print("\n" + "="*80 + "\n")
         
-        app.run(debug=True, port=8000, host='0.0.0.0')
+        # In production on Render, debug should be False
+        app.run(debug=not is_production, port=port, host='0.0.0.0')
     else:
         print("❌ Cannot start server - RAG system not initialized")

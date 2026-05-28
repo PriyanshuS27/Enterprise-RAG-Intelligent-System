@@ -216,8 +216,8 @@ class SyntheticDataGenerator:
         
         files = [
             ("sample_data_audit_logs.json", "JSON_001", "confidential", ["admin", "engineer"]),
-            ("sample_data_alerts.json", "JSON_002", "internal", ["admin", "engineer"]),
-            ("sample_data_compliance.json", "JSON_003", "confidential", ["admin", "hr"]),
+            ("sample_data_alerts.json", "JSON_002", "internal", ["admin", "engineer", "intern"]),
+            ("sample_data_compliance.json", "JSON_003", "confidential", ["admin", "hr", "intern"]),
         ]
         
         for filename, doc_id, security_level, access_roles in files:

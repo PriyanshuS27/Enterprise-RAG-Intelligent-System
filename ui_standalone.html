@@ -974,30 +974,41 @@
         // ============================================================================
         // API URL CONFIGURATION
         // ============================================================================
-        // Local Development: Automatically uses http://localhost:8000/api
-        // Production Deployment: 
-        //   1. Deploy Flask backend to Render, Railway, or Heroku
-        //   2. Update API_URL_PRODUCTION below with your backend URL
-        //   3. Example: https://your-backend.onrender.com/api
+        // IMPORTANT: Configure your backend API URL based on your deployment!
+        // 
+        // For PHONE/REMOTE ACCESS:
+        // Option A - Deploy Backend to Cloud:
+        //   1. Deploy Flask app to Render, Railway, or Heroku
+        //   2. Update API_URL_PRODUCTION below (e.g., https://your-backend.onrender.com/api)
+        //
+        // Option B - Use Local Network IP (Quick Test):
+        //   1. On your desktop, open Command Prompt: ipconfig
+        //   2. Find IPv4 Address (e.g., 192.168.x.x)
+        //   3. Update NETWORK_IP below: 'http://192.168.x.x:8000/api'
+        //   4. Ensure Flask is running and accessible on that IP
         // ============================================================================
         
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         const isProduction = window.location.hostname.includes('vercel.app') || window.location.hostname.includes('netlify.app');
         
-        // IMPORTANT: Update this with your deployed backend URL
-        const API_URL_PRODUCTION = 'http://localhost:8000/api'; // Change this to your deployed backend
+        // CHANGE THIS to your deployed backend URL (e.g., https://your-backend.onrender.com/api)
+        const API_URL_PRODUCTION = 'https://enterprise-rag-backend.onrender.com/api'; // Update with your actual backend URL AFTER deployment
+        
+        // Use this if accessing from same network - replace with your machine's IP from ipconfig
+        const NETWORK_IP = 'http://192.168.1.100:8000/api'; // Change 192.168.1.100 to your machine's IP
+        
         const API_URL_LOCAL = 'http://localhost:8000/api';
         
         let API_URL;
         if (isLocalhost) {
-            // Local development
+            // Local development on desktop
             API_URL = API_URL_LOCAL;
         } else if (isProduction) {
-            // Production - uses same as local for now (change after deploying backend)
+            // Production - try deployed backend first, fallback to network IP
             API_URL = API_URL_PRODUCTION;
         } else {
-            // Fallback
-            API_URL = API_URL_LOCAL;
+            // Other access (phone on same network) - use network IP or deployed backend
+            API_URL = NETWORK_IP;
         }
         
         const users = {
