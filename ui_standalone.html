@@ -971,18 +971,33 @@
     </footer>
 
     <script>
-        // Detect environment and set API URL
+        // ============================================================================
+        // API URL CONFIGURATION
+        // ============================================================================
+        // Local Development: Automatically uses http://localhost:8000/api
+        // Production Deployment: 
+        //   1. Deploy Flask backend to Render, Railway, or Heroku
+        //   2. Update API_URL_PRODUCTION below with your backend URL
+        //   3. Example: https://your-backend.onrender.com/api
+        // ============================================================================
+        
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const isProduction = window.location.hostname.includes('vercel.app');
+        const isProduction = window.location.hostname.includes('vercel.app') || window.location.hostname.includes('netlify.app');
+        
+        // IMPORTANT: Update this with your deployed backend URL
+        const API_URL_PRODUCTION = 'http://localhost:8000/api'; // Change this to your deployed backend
+        const API_URL_LOCAL = 'http://localhost:8000/api';
         
         let API_URL;
         if (isLocalhost) {
-            API_URL = 'http://localhost:8000/api';
+            // Local development
+            API_URL = API_URL_LOCAL;
         } else if (isProduction) {
-            // For production: Use environment variable or show info
-            API_URL = 'https://enterprise-rag-backend.onrender.com/api'; // Update with your backend URL
+            // Production - uses same as local for now (change after deploying backend)
+            API_URL = API_URL_PRODUCTION;
         } else {
-            API_URL = 'http://localhost:8000/api';
+            // Fallback
+            API_URL = API_URL_LOCAL;
         }
         
         const users = {
@@ -1207,13 +1222,19 @@
             
             let errorHTML = `<div class="error-message">${message}</div>`;
             
-            // Add helpful info for production deployment
-            if (isProduction && message.includes('Network')) {
+            // Add helpful info if backend not accessible
+            if (message.includes('Network') || message.includes('fetch')) {
                 errorHTML += `
                     <div class="error-message" style="margin-top: 1rem; background: rgba(245, 158, 11, 0.1); border-color: #f59e0b; color: #fcd34d;">
-                        <strong>⚠️ Backend API Not Deployed</strong><br>
-                        For production use, deploy the Flask API backend on a service like Render, Railway, or Heroku.<br>
-                        <small>Currently configured for: ${API_URL}</small>
+                        <strong>⚠️ Backend API Connection Issue</strong><br><br>
+                        <strong>For Local Testing:</strong><br>
+                        • Ensure Flask API is running: <code>python flask_api.py</code><br>
+                        • API should be at: http://localhost:8000/api<br><br>
+                        <strong>For Production Deployment:</strong><br>
+                        • Deploy Flask backend to Render, Railway, or Heroku<br>
+                        • Update <code>API_URL_PRODUCTION</code> in HTML with your backend URL<br>
+                        • Example: <code>https://your-backend.onrender.com/api</code><br><br>
+                        <strong>Currently using:</strong> <code>${API_URL}</code>
                     </div>
                 `;
             }
@@ -1225,9 +1246,15 @@
         updateAccessDisplay(currentUser);
         updateSampleQuestions(currentUser);
         
-        // Warn if running in production without backend
+        // Debug logging
+        console.log('🚀 Enterprise RAG Platform Started');
+        console.log('📍 Hostname:', window.location.hostname);
+        console.log('🌍 Is Localhost:', isLocalhost);
+        console.log('☁️ Is Production:', isProduction);
+        console.log('🔗 API URL:', API_URL);
+        
         if (isProduction) {
-            console.warn('⚠️ Running in production without backend API deployment. Configure API_URL and deploy backend for full functionality.');
+            console.warn('⚠️ Running in PRODUCTION mode. Ensure backend is deployed at:', API_URL);
         }
     </script>
 </body>
